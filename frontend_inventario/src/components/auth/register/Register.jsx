@@ -49,7 +49,7 @@ export default function Register() {
                     </div>
                     <div className="RegisterItem">
                         <label htmlFor="email">E-mail</label>
-                        <input ref={email} type="email" name="" id="email" placeholder="mitienda@eamil.com" />
+                        <input ref={email} type="email" name="" id="email" placeholder="mitienda@email.com" />
                     </div>
                     <div className="RegisterItem">
                         <label htmlFor="pass">Contraseña</label>
