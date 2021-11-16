@@ -23,32 +23,37 @@ export default function Login() {
         
         <div className="Login">
             <h1 align="center">Iniciar sesión</h1>
-            <form>
-                <div align="center">
-                    <img src={logo} className="LoginLogo" alt="logo" />
-                </div>
+                
+                {/* Formulario: email y contraseña */}
                 <div className="LoginContainer">
+                    {/* Logo de inicio de sesión */}
+                    <div align="center">
+                        <img src={logo} className="LoginLogo" alt="logo" />
+                    </div>
+                    {/* Campo para ingresar el email */}
                     <div className="LoginItem">
                         <label htmlFor="email">E-mail</label>
                         <input ref={email} type="email" name="" id="email" placeholder="mitienda@email.com" />
                     </div>
+                    {/* Campo para ingresar la contraseña */}
                     <div className="LoginItem">
                         <label htmlFor="pass">Contraseña</label>
                         <input ref={pass} type="password" name="" id="pass" placeholder="Contraseña123*" />
                     </div>
+                    {/* Botón para ingresar */}
                     <div>
                         <button className="LoginButton" onClick={signIn}>Ingresar</button>
                     </div>
                 </div>
+                {/* Sección para crear cuenta si no tiene una */}
                 <div align="center" className="RegisterContainer">
                     <label>¿No tienes una cuenta?</label>
                     <button className="SignUpButton">Crear cuenta</button>
                 </div>
-            </form>
       </div>        
 
         // <Fragment>
-        //     <h2>Inicio de sesión</h2>
+        //     <h2>Iniciar sesión</h2>
         //     <label htmlFor="email">E-mail</label>
         //     <input ref={email} type="email" name="" id="email" />
         //     <label htmlFor="pass">Contraseña</label>

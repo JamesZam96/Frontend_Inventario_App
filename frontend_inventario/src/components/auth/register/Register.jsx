@@ -30,7 +30,7 @@ export default function Register() {
         <div className="Register">
             <h1 align="center">Crear cuenta</h1>
             <p align="center">Por favor diligencie el siguiente formulario para crear una cuenta.</p>
-            <form className="RegisterForm">
+            <div className="RegisterForm">
                     <div className="RegisterItem">
                         <label htmlFor="storeName">Nombre de la Tienda</label>
                         <input ref={storeName} type="text" name="" id="storeName" placeholder="Mi Tienda" />
@@ -58,7 +58,7 @@ export default function Register() {
                     <div>
                         <button className="RegisterButton" onClick={signUp}>Registrar</button>
                     </div>
-            </form>
+            </div>
       </div>        
 
 
