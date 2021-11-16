@@ -1,9 +1,13 @@
 import axios from 'axios'
 import React, {useRef} from "react";
+import authHelper from '../../../helpers/auth.helper'
+import { useNavigate } from 'react-router-dom';
 import './Login.css'
 import logo from "./logo-login.svg"
 
 export default function Login() {
+
+    let navigate = useNavigate()
     
     const email = useRef();
     const pass = useRef();
@@ -16,7 +20,11 @@ export default function Login() {
         const data = await axios.post(process.env.REACT_APP_API_URL+'login',form,{
             header: {'Accept': 'application/json'}
         })
-        console.log(data)
+        // Almacenar token en el localstorage:
+        authHelper.setToken(data.data.token)
+        // Direccionar a la página de inicio al ingresar:
+        navigate('/')
+        console.log(data.data)
     }
     
     return (
@@ -48,7 +56,7 @@ export default function Login() {
                 {/* Sección para crear cuenta si no tiene una */}
                 <div align="center" className="RegisterContainer">
                     <label>¿No tienes una cuenta?</label>
-                    <button className="SignUpButton">Crear cuenta</button>
+                    <button className="SignUpButton" onClick={() => navigate('/register')}>Crear cuenta</button>
                 </div>
       </div>        
 
