@@ -1,6 +1,6 @@
 import React from "react"
-import './TopBar.css'
-import {NotificationsNone, Language, Settings} from '@material-ui/icons';
+import './topbar.css'
+import {NotificationsNone, Language, ExitToApp} from '@material-ui/icons';
 
 export default function TopBar(){
     return (
@@ -19,7 +19,7 @@ export default function TopBar(){
                         <span className="topIconBadge">1</span>
                     </div>
                     <div className="topbarIconContainer">
-                        <Settings/>
+                        <ExitToApp/>
                     </div>
                     <img src="https://images.pexels.com/photos/4483610/pexels-photo-4483610.jpeg?cs=srgb&dl=pexels-tiger-lily-4483610.jpg&fm=jpg" alt="" className="topAvatar"/>
                 </div>

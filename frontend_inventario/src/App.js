@@ -1,16 +1,16 @@
-import SideBar from "./components/sidebar/SideBar";
-import TopBar from "./components/topbar/TopBar";
-import './App.css'
-
+import Topbar from './components/topbar/Topbar';
+import Sidebar from './components/sidebar/Sidebar';
+import React from 'react';
+import './app.css'
 function App() {
   return (
-    <div className="App">
-      <TopBar />
-      <div className="container">
-        <SideBar/>
-        <div className="others">other pages</div>
-      </div>
+    <div>
+    <Topbar />
+    <div className="container">
+      <Sidebar/>
+      <div className="others">other pages</div>
     </div>
+  </div>
   );
 }
 
