@@ -5,6 +5,12 @@
     padding: 2% 20% 2% 20%;
 }
 
+.RegisterTitle{
+    flex: 4;
+    text-align: center;
+    font-weight: 600;
+}
+
 .RegisterForm {
     padding: 16px;
     margin-top: 10px;
@@ -39,8 +45,8 @@
 .RegisterButton{
     width: 95%;
     border: none;
-    background-color: darkblue;
-    color: white;
+    background-color: #D5F4EB;
+    color: black;
     padding: 7px 10px;
     font-weight: 600;
     border-radius: 10px;

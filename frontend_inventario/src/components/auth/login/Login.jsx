@@ -4,6 +4,7 @@ import authHelper from '../../../helpers/auth.helper'
 import { useNavigate } from 'react-router-dom';
 import './Login.css'
 import logo from "./logo-login.svg"
+import Topbar from "../../../components/topbar/TopBar"
 
 export default function Login() {
 
@@ -28,37 +29,39 @@ export default function Login() {
     }
     
     return (
-        
-        <div className="Login">
-            <h1 align="center">Iniciar sesión</h1>
-                
-                {/* Formulario: email y contraseña */}
-                <div className="LoginContainer">
-                    {/* Logo de inicio de sesión */}
-                    <div align="center">
-                        <img src={logo} className="LoginLogo" alt="logo" />
+        <div>
+            <Topbar/>
+            <div className="Login">
+                <h1 className="LoginTitle">Iniciar sesión</h1>
+                    
+                    {/* Formulario: email y contraseña */}
+                    <div className="LoginContainer">
+                        {/* Logo de inicio de sesión */}
+                        <div align="center">
+                            <img src={logo} className="LoginLogo" alt="logo" />
+                        </div>
+                        {/* Campo para ingresar el email */}
+                        <div className="LoginItem">
+                            <label htmlFor="email">E-mail</label>
+                            <input ref={email} type="email" name="" id="email" placeholder="mitienda@email.com" />
+                        </div>
+                        {/* Campo para ingresar la contraseña */}
+                        <div className="LoginItem">
+                            <label htmlFor="pass">Contraseña</label>
+                            <input ref={pass} type="password" name="" id="pass" placeholder="Contraseña123*" />
+                        </div>
+                        {/* Botón para ingresar */}
+                        <div>
+                            <button className="LoginButton" onClick={signIn}>Ingresar</button>
+                        </div>
                     </div>
-                    {/* Campo para ingresar el email */}
-                    <div className="LoginItem">
-                        <label htmlFor="email">E-mail</label>
-                        <input ref={email} type="email" name="" id="email" placeholder="mitienda@email.com" />
+                    {/* Sección para crear cuenta si no tiene una */}
+                    <div align="center" className="RegisterContainer">
+                        <label>¿No tienes una cuenta?</label>
+                        <button className="SignUpButton" onClick={() => navigate('/register')}>Crear cuenta</button>
                     </div>
-                    {/* Campo para ingresar la contraseña */}
-                    <div className="LoginItem">
-                        <label htmlFor="pass">Contraseña</label>
-                        <input ref={pass} type="password" name="" id="pass" placeholder="Contraseña123*" />
-                    </div>
-                    {/* Botón para ingresar */}
-                    <div>
-                        <button className="LoginButton" onClick={signIn}>Ingresar</button>
-                    </div>
-                </div>
-                {/* Sección para crear cuenta si no tiene una */}
-                <div align="center" className="RegisterContainer">
-                    <label>¿No tienes una cuenta?</label>
-                    <button className="SignUpButton" onClick={() => navigate('/register')}>Crear cuenta</button>
-                </div>
-      </div>        
+            </div>   
+        </div>     
 
         // <Fragment>
         //     <h2>Iniciar sesión</h2>

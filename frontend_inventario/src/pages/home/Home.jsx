@@ -1,7 +1,7 @@
 import React from 'react'
 import './home.css'
-import SideBar from '../../components/sidebar/Sidebar'
-import Topbar from '../../components/topbar/Topbar'
+import SideBar from '../../components/sidebar/SideBar.jsx'
+import Topbar from '../../components/topbar/TopBar.jsx'
 import HomeCards from '../../components/homecards/HomeCards'
 
 export default function Home() {

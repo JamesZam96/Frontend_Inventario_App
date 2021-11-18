@@ -1,5 +1,5 @@
 import React from "react";
-import './sidebar.css'
+import "./SideBar.css"
 import {Home,
     PersonAdd,
     PeopleAlt,
@@ -31,22 +31,22 @@ export default function SideBar(){
                 <div className="sidebarMenu">
                     <h3 className="sidebarTitle">Crear</h3>
                     <ul className="sidebarList">
-                        <Link to="/createuser" className="link">
+                        <Link to="/registerEmployee" className="link">
                             <li className="sidebarListItem">
                                 <PersonAdd className="sidebarIcon"/>
-                                Crear Usuario
+                                Nuevo empleado
                             </li>
                         </Link>
                         <Link to="/createclient" className="link">
                             <li className="sidebarListItem">
                                 <PeopleAlt className="sidebarIcon"/>
-                                Crear Cliente
+                                Nuevo Cliente
                             </li>
                         </Link>
                         <Link to="/createprovider" className="link">
                             <li className="sidebarListItem">
                                 <Business className="sidebarIcon"/>
-                                Crear Proveedor
+                                Nuevo Proveedor
                             </li>
                         </Link>
                     </ul>

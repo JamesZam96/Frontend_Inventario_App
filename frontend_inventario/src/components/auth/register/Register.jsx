@@ -1,8 +1,12 @@
 import axios from 'axios'
+import { useNavigate } from 'react-router-dom';
 import React, {useRef} from "react";
 import './Register.css'
+import Topbar from "../../../components/topbar/TopBar"
 
 export default function Register() {
+
+    let navigate = useNavigate()
 
     const storeName = useRef();
     const names = useRef();
@@ -27,40 +31,42 @@ export default function Register() {
     }
     
     return (
-        <div className="Register">
-            <h1 align="center">Crear cuenta</h1>
-            <p align="center">Por favor diligencie el siguiente formulario para crear una cuenta.</p>
-            <div className="RegisterForm">
-                    <div className="RegisterItem">
-                        <label htmlFor="storeName">Nombre de la Tienda</label>
-                        <input ref={storeName} type="text" name="" id="storeName" placeholder="Mi Tienda" />
-                    </div>
-                    <div className="RegisterItem">
-                        <label htmlFor="phone">Teléfono</label>
-                        <input ref={phone} type="text" name="" id="phone" placeholder="+1 123 456 78" />
-                    </div>
-                    <div className="RegisterItem">
-                        <label htmlFor="names">Nombres</label>
-                        <input ref={names} type="text" name="" id="names" placeholder="Juan" />
-                    </div>
-                    <div className="RegisterItem">
-                        <label htmlFor="lastName">Apellidos</label>
-                        <input ref={lastNames} type="text" name="" id="lastNames" placeholder="Castaño" />
-                    </div>
-                    <div className="RegisterItem">
-                        <label htmlFor="email">E-mail</label>
-                        <input ref={email} type="email" name="" id="email" placeholder="mitienda@email.com" />
-                    </div>
-                    <div className="RegisterItem">
-                        <label htmlFor="pass">Contraseña</label>
-                        <input ref={pass} type="password" name="" id="pass" placeholder="Contraseñ123*" />
-                    </div>
-                    <div>
-                        <button className="RegisterButton" onClick={signUp}>Registrar</button>
-                    </div>
-            </div>
-      </div>        
-
+        <div>
+            <Topbar/>
+            <div className="Register">
+                <h1 className="RegisterTitle">Crear cuenta</h1>
+                <p align="center">Por favor diligencie el siguiente formulario para crear una cuenta.</p>
+                <div className="RegisterForm">
+                        <div className="RegisterItem">
+                            <label htmlFor="storeName">Nombre de la Tienda</label>
+                            <input ref={storeName} type="text" name="" id="storeName" placeholder="Mi Tienda" />
+                        </div>
+                        <div className="RegisterItem">
+                            <label htmlFor="phone">Teléfono</label>
+                            <input ref={phone} type="text" name="" id="phone" placeholder="+1 123 456 78" />
+                        </div>
+                        <div className="RegisterItem">
+                            <label htmlFor="names">Nombres</label>
+                            <input ref={names} type="text" name="" id="names" placeholder="Juan" />
+                        </div>
+                        <div className="RegisterItem">
+                            <label htmlFor="lastName">Apellidos</label>
+                            <input ref={lastNames} type="text" name="" id="lastNames" placeholder="Castaño" />
+                        </div>
+                        <div className="RegisterItem">
+                            <label htmlFor="email">E-mail</label>
+                            <input ref={email} type="email" name="" id="email" placeholder="mitienda@email.com" />
+                        </div>
+                        <div className="RegisterItem">
+                            <label htmlFor="pass">Contraseña</label>
+                            <input ref={pass} type="password" name="" id="pass" placeholder="Contraseñ123*" />
+                        </div>
+                        <div>
+                            <button className="RegisterButton" onClick={ () => {signUp(); navigate('/login') } }>Registrar</button>
+                        </div>
+                </div>
+            </div>        
+        </div>  
 
         // <Fragment>
         //     <h2>Crear cuenta</h2>

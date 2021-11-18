@@ -1,7 +1,7 @@
 import React from 'react'
 import './createClient.css'
-import SideBar from '../../components/sidebar/Sidebar'
-import Topbar from '../../components/topbar/Topbar'
+import SideBar from '../../components/sidebar/SideBar.jsx'
+import Topbar from '../../components/topbar/TopBar.jsx'
 
 export default function CreateClient() {
     return (
