@@ -10,7 +10,13 @@ export default function TopBar(){
                     <span className="logo">InStore</span>
                 </div>
                 <div className="topRight">
-                    <div className="topbarIconContainer">
+                    <div>
+                        <button className="topbarButtonSingIn">Ingresar</button>
+                    </div>
+                    <div>
+                        <button className="topbarButtonSingUp">Crear cuenta</button>
+                    </div>
+                    {/* <div className="topbarIconContainer">
                         <NotificationsNone/>
                         <span className="topIconBadge">2</span>
                     </div>
@@ -21,7 +27,7 @@ export default function TopBar(){
                     <div className="topbarIconContainer">
                         <ExitToApp/>
                     </div>
-                    <img src="https://images.pexels.com/photos/4483610/pexels-photo-4483610.jpeg?cs=srgb&dl=pexels-tiger-lily-4483610.jpg&fm=jpg" alt="" className="topAvatar"/>
+                    <img src="https://images.pexels.com/photos/4483610/pexels-photo-4483610.jpeg?cs=srgb&dl=pexels-tiger-lily-4483610.jpg&fm=jpg" alt="" className="topAvatar"/> */}
                 </div>
             </div>
         </div>
