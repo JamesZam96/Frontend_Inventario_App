@@ -1,6 +1,6 @@
 import React, {useRef} from 'react'
 import axios from 'axios'
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import './createClient.css'
 import SideBar from '../../components/sidebar/SideBar.jsx'
 import Topbar from '../../components/topbar/TopBar.jsx'
@@ -65,9 +65,18 @@ export default function CreateClient() {
                         <label>Teléfono</label>
                         <input ref={phone} id="phone" type="text" placeholder="Teléfono"/>
                     </div>
-                    <button className="newClientButton" onClick={create}>
-                        Crear
-                    </button>
+                    <div className="newClientItem">
+                        <button className="newClientButton" onClick={create}>
+                            Crear
+                        </button>
+                    </div>
+                    <Link to="/listclient" className="link">
+                        <div className="newClientItem">
+                            <button className="listClientButton">
+                                Lista de Clientes
+                            </button>
+                        </div>
+                    </Link>
                 </div>
             </div>
         </div>

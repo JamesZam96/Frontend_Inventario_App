@@ -45,6 +45,7 @@
     border-radius: 10px;
     margin-top: 45px;
     cursor: pointer;
+    align-self: center;
 }
 
 .newProviderTitle{
@@ -56,4 +57,22 @@
 .titleProvider{
     flex: 4;
     font-weight: 300;
+}
+
+.listProviderButton{
+    width: 200px;
+    border: none;
+    background-color: #D5F4EB;
+    color: black;
+    padding: 7px 10px;
+    font-weight: 600;
+    border-radius: 10px;
+    margin-top: 45px;
+    cursor: pointer;
+    align-self: center;
+}
+
+.link{
+    text-decoration: none;
+    color: black;
 }

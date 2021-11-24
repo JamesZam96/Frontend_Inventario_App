@@ -4,10 +4,16 @@ import { Routes, Route } from 'react-router-dom';
 import Login from './components/auth/login/Login'
 import Register from './components/auth/register/Register'
 import CreateUser from './pages/createUser/CreateUser';
-import CreateClient from './pages/crearCliente/CreateClient';
+import CreateClient from './pages/createClient/CreateClient';
 import CreateProvider from './pages/createProvider/CreateProvider';
 import RegisterProduct from './pages/registerProduct/RegisterProduct';
 import Home from './pages/home/Home';
+import CheckInventory from './pages/checkInventory/CheckInventory';
+import ListEmployees from './pages/listEmployees/ListEmployees';
+import ListClients from './pages/listClients/ListClients';
+import ListProviders from './pages/listProviders/ListProviders';
+import RegisterCategory from './pages/registerCategory/RegisterCategory';
+import ListCategory from './pages/listCategory/ListCategory';
 
 
 export default function Router() {
@@ -20,6 +26,12 @@ export default function Router() {
             <Route path={'/createclient'} element={<CreateClient/>}/>
             <Route path={'/createprovider'} element={<CreateProvider/>}/>
             <Route path={'/registerproduct'} element={<RegisterProduct/>}/>
+            <Route path={'/checkinventory'} element={<CheckInventory/>}/>
+            <Route path={'/listemployee'} element={<ListEmployees/>}/>
+            <Route path={'/listclient'} element={<ListClients/>}/>
+            <Route path={'/listprovider'} element={<ListProviders/>}/>
+            <Route path={'/registercategory'} element={<RegisterCategory/>}/>
+            <Route path={'/listcategory'} element={<ListCategory/>}/>
         </Routes>
     )
 }

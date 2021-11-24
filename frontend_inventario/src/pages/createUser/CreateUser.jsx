@@ -1,6 +1,6 @@
 import React, {useRef} from 'react'
 import axios from 'axios'
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import './createUser.css'
 import SideBar from '../../components/sidebar/SideBar.jsx'
 import Topbar from '../../components/topbar/TopBar.jsx'
@@ -55,9 +55,10 @@ export default function CreateUser() {
                     </div>
                     <div className="newEmployeeItem">
                         <label>Tipo de Usuario</label>
-                        <select className="newEmployeeSelect" name="active" id="active">
-                            <option ref={userType} id="userType" value="Administrador">Administrador</option>
-                            <option ref={userType} id="userType" value="Vendedor">Vendedor</option>
+                        <select ref={userType} className="newEmployeeSelect" name="active" id="active">
+                            <option value="">Seleccione el tipo</option>
+                            <option id="userType" value="Administrador">Administrador</option>
+                            <option id="userType" value="Vendedor">Vendedor</option>
                         </select>
                     </div>
                     <div className="newEmployeeItem">
@@ -68,9 +69,18 @@ export default function CreateUser() {
                         <label>Contraseña</label>
                         <input ref={pass} id="pass" type="password" placeholder="Contraseña"/>
                     </div>
+                    <div className="newEmployeeItem">
                     <button className="newEmployeeButton" onClick={signUp}>
                         Crear
                     </button>
+                    </div>
+                    <Link to="/listemployee" className="link">
+                    <div className="newEmployeeItem">
+                        <button className="listEmployeeButton">
+                            Lista de Empleados
+                        </button>
+                    </div>
+                    </Link>
                 </div>
             </div>
         </div>

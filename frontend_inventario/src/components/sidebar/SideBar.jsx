@@ -1,5 +1,5 @@
 import React from "react";
-import "./SideBar.css"
+import "./sidebar.css"
 import {Home,
     PersonAdd,
     PeopleAlt,
@@ -21,7 +21,7 @@ export default function SideBar(){
                     <h3 className="sidebarTitle">Dashboard</h3>
                     <ul className="sidebarList">
                         <Link to="/" className="link">
-                            <li className="sidebarListItem active">
+                            <li className="sidebarListItem">
                                 <Home className="sidebarIcon"/>
                                 Inicio
                             </li>
@@ -73,10 +73,12 @@ export default function SideBar(){
                 <div className="sidebarMenu">
                     <h3 className="sidebarTitle">Consultar</h3>
                     <ul className="sidebarList">
-                        <li className="sidebarListItem">
-                            <Search className="sidebarIcon"/>
-                            Consultar Inventario
-                        </li>
+                        <Link to="/checkinventory" className="link">
+                            <li className="sidebarListItem">
+                                <Search className="sidebarIcon"/>
+                                Consultar Inventario
+                            </li>
+                        </Link>
                         <li className="sidebarListItem">
                             <Description className="sidebarIcon"/>
                             Informe de Inventario

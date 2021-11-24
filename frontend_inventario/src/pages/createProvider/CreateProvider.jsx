@@ -1,6 +1,6 @@
 import React, {useRef} from 'react'
 import axios from 'axios'
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import './createProvider.css'
 import SideBar from '../../components/sidebar/SideBar.jsx'
 import Topbar from '../../components/topbar/TopBar.jsx'
@@ -72,9 +72,18 @@ export default function CreateProvider() {
                         <label>Web</label>
                         <input ref={web} id="web" type="text" placeholder="Web"/>
                     </div>
-                    <button className="newProviderButton" onClick={create}>
-                        Crear
-                    </button>
+                    <div className="newProviderItem">
+                        <button className="newProviderButton" onClick={create}>
+                            Crear
+                        </button>
+                    </div>
+                    <Link to="/listprovider" className="link">
+                        <div className="newProviderItem">
+                            <button className="listProviderButton">
+                                Lista de Proveedores
+                            </button>
+                        </div>
+                    </Link>
                 </div>
             </div>
         </div>

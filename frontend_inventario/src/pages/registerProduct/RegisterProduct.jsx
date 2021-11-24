@@ -2,6 +2,7 @@ import React from 'react'
 import './registerProduct.css'
 import SideBar from '../../components/sidebar/SideBar.jsx'
 import Topbar from '../../components/topbar/TopBar.jsx'
+import {Link} from 'react-router-dom'
 
 export default function RegisterProduct() {
     return (
@@ -36,7 +37,7 @@ export default function RegisterProduct() {
                     <div className="newProductItem">
                         <label>Categoría</label>
                         <select className="newProductSelect" name="active" id="active">
-                            <option value="" disabled>Selecione Categoría</option>
+                            <option value="">Selecione Categoría</option>
                             <option value="Categoría 1">Categoría 1</option>
                             <option value="Categoría 2">Categoría 2</option>
                         </select>
@@ -44,7 +45,7 @@ export default function RegisterProduct() {
                     <div className="newProductItem">
                         <label>Proveedor</label>
                         <select className="newProductSelect" name="active" id="active">
-                            <option value="" disabled>Selecione Proveedor</option>
+                            <option value="">Selecione Proveedor</option>
                             <option value="Proveedor 1">Proveedor 1</option>
                             <option value="Proveedor 2">Proveedor 2</option>
                         </select>
@@ -64,7 +65,7 @@ export default function RegisterProduct() {
                     <div className="newProductItem">
                         <label>Proveedor</label>
                         <select className="newProductSelect" name="active" id="active">
-                            <option value="" disabled>Selecione Estado</option>
+                            <option value="">Selecione Estado</option>
                             <option value="Activo">Activo</option>
                             <option value="Inactivo">Inactivo</option>
                         </select>
@@ -73,9 +74,18 @@ export default function RegisterProduct() {
                         <label>Imagen</label>
                         <input type="file"/>
                     </div>
-                    <button className="newProductButton">
-                        Registrar
-                    </button>
+                    <div className="newProductItem">
+                        <button className="newProductButton">
+                            Registrar
+                        </button>
+                    </div>
+                    <Link to="/registercategory" className="link">
+                        <div className="newProductItem">
+                            <button className="registerCategoryButton">
+                                Registrar Categoría
+                            </button>
+                        </div>
+                    </Link>
                 </form>
             </div>
         </div>

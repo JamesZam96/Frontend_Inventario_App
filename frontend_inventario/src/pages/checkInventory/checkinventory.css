@@ -1,0 +1,21 @@
+.container{
+    display: flex;
+}
+
+.tableInventory{
+    flex: 4;
+    margin-top: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.tableContainer{
+    margin-top: 20px;
+    width: 100%;
+}
+
+.listProductTitle{
+    flex: 4;
+    text-align: center;
+    font-weight: 600;
+}
