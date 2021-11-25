@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect, useState} from 'react'
 import Sidebar from '../../components/sidebar/SideBar'
 import Topbar from '../../components/topbar/TopBar'
 import './listEmployees.css'
@@ -6,10 +6,25 @@ import {TableContainer, Table, TableHead, TableBody, TableRow, TableCell} from '
 
 export default function ListEmployees() {
 
-    const data = [
+    const employees = [
         {nameEmployee:'James', idEmployee: '6731yev', userType: 'Administrador'},
         {nameEmployee:'Luisa', idEmployee: '313uyv3', userType: 'Vendedor'},
     ]
+
+    // const [employees, setEmployees] = useState([])
+
+    // useEffect(()=>{
+    //     updateEmployees()
+    // },[])
+
+    // const updateEmployees = function(){
+    //     axios.get(process.env.REACT_APP_API_URL+'createclient/')
+    //     .then(res=>{
+    //         console.log(res)
+    //         setEmployees(res.data)
+    //     })
+    //     .catch(err=> console.log(err))
+    // }
 
     return (
         <div>
@@ -20,24 +35,24 @@ export default function ListEmployees() {
                 <div className="tableListEmployee">
                     <h1 className="listEmployeeTitle">Lista de Empleados</h1>
                     <TableContainer className="tableContainer">
-                        <Table>
-                            <TableHead>
-                                <TableRow>
-                                    <TableCell><b>Nombre</b></TableCell>
-                                    <TableCell><b>Identificación</b></TableCell>
-                                    <TableCell><b>Tipo</b></TableCell>
-                                </TableRow>
-                            </TableHead>
-                            <TableBody>
-                                {data.map(celda=>(
-                                    <TableRow>
-                                        <TableCell>{celda.nameEmployee}</TableCell>
-                                        <TableCell>{celda.idEmployee}</TableCell>
-                                        <TableCell>{celda.userType}</TableCell>
-                                    </TableRow>
-                                ))}
-                            </TableBody>
-                        </Table>
+                    <Table>
+                <TableHead>
+                    <TableRow>
+                        <TableCell><b>Nombres</b></TableCell>
+                        <TableCell><b>Apellidos</b></TableCell>
+                        <TableCell><b>Tipo</b></TableCell>
+                    </TableRow>
+                </TableHead>
+                <TableBody>
+                    {employees.map(employee=>(
+                        <TableRow>
+                            <TableCell>{employee.nameEmployee}</TableCell>
+                            <TableCell>{employee.idEmployee}</TableCell>
+                            <TableCell>{employee.userType}</TableCell>
+                        </TableRow>
+                    ))}
+                </TableBody>
+            </Table>
                     </TableContainer>
                 </div>
             </div>

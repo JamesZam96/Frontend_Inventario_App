@@ -1,15 +1,27 @@
-import React from 'react'
+import React, {useEffect, useState} from 'react'
 import Sidebar from '../../components/sidebar/SideBar'
 import Topbar from '../../components/topbar/TopBar'
 import './listClients.css'
-import {TableContainer, Table, TableHead, TableBody, TableRow, TableCell} from '@material-ui/core'
-
+import {TableContainer} from '@material-ui/core'
+import axios from 'axios'
+import ListTableClients from '../../components/listTableClients/ListTableClients'
+ 
 export default function ListClients() {
 
-    const data = [
-        {nameClient:'James', idClient: '6731yev'},
-        {nameClient:'Luisa', idClient: '313uyv3'},
-    ]
+    const [clients, setClients] = useState([])
+
+    useEffect(()=>{
+        updateClients()
+    },[])
+
+    const updateClients = function(){
+        axios.get(process.env.REACT_APP_API_URL+'createclient/')
+        .then(res=>{
+            console.log(res)
+            setClients(res.data)
+        })
+        .catch(err=> console.log(err))
+    }
 
     return (
         <div>
@@ -20,22 +32,7 @@ export default function ListClients() {
                 <div className="tableListClient">
                     <h1 className="listClientTitle">Lista de Clientes</h1>
                     <TableContainer className="tableContainer">
-                        <Table>
-                            <TableHead>
-                                <TableRow>
-                                    <TableCell><b>Nombre</b></TableCell>
-                                    <TableCell><b>Identificación</b></TableCell>
-                                </TableRow>
-                            </TableHead>
-                            <TableBody>
-                                {data.map(celda=>(
-                                    <TableRow>
-                                        <TableCell>{celda.nameClient}</TableCell>
-                                        <TableCell>{celda.idClient}</TableCell>
-                                    </TableRow>
-                                ))}
-                            </TableBody>
-                        </Table>
+                        <ListTableClients clients={clients}/>
                     </TableContainer>
                 </div>
             </div>

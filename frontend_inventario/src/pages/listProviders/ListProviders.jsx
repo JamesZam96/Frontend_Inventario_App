@@ -1,15 +1,27 @@
-import React from 'react'
+import React, {useEffect, useState} from 'react'
 import Sidebar from '../../components/sidebar/SideBar'
 import Topbar from '../../components/topbar/TopBar'
 import './listProviders.css'
-import {TableContainer, Table, TableHead, TableBody, TableRow, TableCell} from '@material-ui/core'
+import {TableContainer} from '@material-ui/core'
+import axios from 'axios'
+import ListTableProviders from '../../components/listTableProviders/listTableProviders'
 
 export default function ListProviders() {
 
-    const data = [
-        {nameProvider:'James', idProvider: '6731yev'},
-        {nameProvider:'Luisa', idProvider: '313uyv3'},
-    ]
+    const [providers, setProviders] = useState([])
+
+    useEffect(()=>{
+        updateProviders()
+    },[])
+
+    const updateProviders = function(){
+        axios.get(process.env.REACT_APP_API_URL+'createprovider/')
+        .then(res=>{
+            console.log(res)
+            setProviders(res.data)
+        })
+        .catch(err=> console.log(err))
+    }
 
     return (
         <div>
@@ -20,22 +32,7 @@ export default function ListProviders() {
                 <div className="tableListProvider">
                     <h1 className="listProviderTitle">Lista de Proveedores</h1>
                     <TableContainer className="tableContainer">
-                        <Table>
-                            <TableHead>
-                                <TableRow>
-                                    <TableCell><b>Nombre</b></TableCell>
-                                    <TableCell><b>Identificación</b></TableCell>
-                                </TableRow>
-                            </TableHead>
-                            <TableBody>
-                                {data.map(celda=>(
-                                    <TableRow>
-                                        <TableCell>{celda.nameProvider}</TableCell>
-                                        <TableCell>{celda.idProvider}</TableCell>
-                                    </TableRow>
-                                ))}
-                            </TableBody>
-                        </Table>
+                        <ListTableProviders providers={providers}/>
                     </TableContainer>
                 </div>
             </div>
