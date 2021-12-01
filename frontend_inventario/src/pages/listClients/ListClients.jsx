@@ -5,7 +5,9 @@ import './listClients.css'
 import {TableContainer} from '@material-ui/core'
 import axios from 'axios'
 import ListTableClients from '../../components/listTableClients/ListTableClients'
- 
+import authHelper from '../../helpers/auth.helper'
+import {Navigate} from 'react-router-dom'
+
 export default function ListClients() {
 
     const [clients, setClients] = useState([])
@@ -24,6 +26,7 @@ export default function ListClients() {
     }
 
     return (
+        authHelper.getToken()?
         <div>
             <div>
             <Topbar/>
@@ -37,6 +40,7 @@ export default function ListClients() {
                 </div>
             </div>
         </div>
-        </div>
+        </div>:
+        <Navigate to={'/'}/>
     )
 }

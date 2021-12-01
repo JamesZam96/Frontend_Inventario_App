@@ -1,17 +1,32 @@
-import React from 'react'
+import React, {useEffect, useState} from 'react'
 import Sidebar from '../../components/sidebar/SideBar'
 import Topbar from '../../components/topbar/TopBar'
 import './listCategory.css'
-import {TableContainer, Table, TableHead, TableBody, TableRow, TableCell} from '@material-ui/core'
+import {TableContainer} from '@material-ui/core'
+import { Navigate } from 'react-router-dom'
+import authHelper from '../../helpers/auth.helper'
+import axios from 'axios'
+import ListTableCategories from '../../components/listTableCategories/listTableCategories'
 
 export default function ListCategory() {
 
-    const data = [
-        {nameCategory:'James', descriptionCategory: '6731yev'},
-        {nameCategory:'Luisa', descriptionCategory: '313uyv3'},
-    ]
+    const [categories, setCategories] = useState([])
+
+    useEffect(()=>{
+        uptadateCategories()
+    },[])
+
+    const uptadateCategories = function(){
+        axios.get(process.env.REACT_APP_API_URL+'category/')
+        .then(res=>{
+            console.log(res)
+            setCategories(res.data)
+        })
+        .catch(err=> console.log(err))
+    }
 
     return (
+        authHelper.getToken()?
         <div>
             <div>
             <Topbar/>
@@ -20,26 +35,12 @@ export default function ListCategory() {
                 <div className="tableListCategory">
                     <h1 className="listCategoryTitle">Lista de Categorías</h1>
                     <TableContainer className="tableContainer">
-                        <Table>
-                            <TableHead>
-                                <TableRow>
-                                    <TableCell><b>Nombre</b></TableCell>
-                                    <TableCell><b>Descripción</b></TableCell>
-                                </TableRow>
-                            </TableHead>
-                            <TableBody>
-                                {data.map(celda=>(
-                                    <TableRow>
-                                        <TableCell>{celda.nameCategory}</TableCell>
-                                        <TableCell>{celda.descriptionCategory}</TableCell>
-                                    </TableRow>
-                                ))}
-                            </TableBody>
-                        </Table>
+                        <ListTableCategories categories={categories}/>
                     </TableContainer>
                 </div>
             </div>
         </div>
-        </div>
+        </div>:
+        <Navigate to={'/'}/>
     )
 }

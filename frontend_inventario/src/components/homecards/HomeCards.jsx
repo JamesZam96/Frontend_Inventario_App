@@ -17,7 +17,7 @@ export default function HomeCards() {
             <div className="cardsItemTitle">
                 <span>Bienvenido</span>
             </div>
-            <Link to="/createuser" className="linkCard">
+            <Link to="/registerEmployee" className="linkCard">
                 <div className="cardsItem">
                     <span className="cardTitle">Crear Usuario</span>
                     <div className="cardIconContainer">
@@ -25,7 +25,7 @@ export default function HomeCards() {
                     </div>
                 </div>
             </Link>
-            <Link to="createclient" className="linkCard">
+            <Link to="/createclient" className="linkCard">
                 <div className="cardsItem">
                     <span className="cardTitle">Crear Cliente</span>
                     <div className="cardIconContainer">
@@ -61,12 +61,14 @@ export default function HomeCards() {
                     <LibraryAddCheck/>
                 </div>
             </div>
-            <div className="cardsItem">
-                <span className="cardTitle">Consultar Inventario</span>
-                <div className="cardIconContainer">
-                    <Search/>
+            <Link to="/checkinventory" className="linkCard">
+                <div className="cardsItem">
+                    <span className="cardTitle">Consultar Inventario</span>
+                    <div className="cardIconContainer">
+                        <Search/>
+                    </div>
                 </div>
-            </div>
+            </Link>
             <div className="cardsItem">
                 <span className="cardTitle">Informe de Inventario</span>
                 <div className="cardIconContainer">
