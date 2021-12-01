@@ -1,12 +1,33 @@
-import React from 'react'
-// import axios from 'axios'
-import { Link } from 'react-router-dom';
+import React, {useRef} from 'react'
+import { Link, Navigate, useNavigate } from 'react-router-dom';
 import './registerCategory.css'
 import SideBar from '../../components/sidebar/SideBar.jsx'
 import Topbar from '../../components/topbar/TopBar.jsx'
+import authHelper from '../../helpers/auth.helper'
+import axios from 'axios';
 
 export default function RegisterCategory() {
+
+    let navigate = useNavigate()
+
+    const name = useRef();
+    const description = useRef();
+
+    const create = async () => {
+        let form = new URLSearchParams()
+        form.append('name', name.current.value)
+        form.append('description', description.current.value)
+
+        console.log(process.env.REACT_APP_API_URL)
+        const data = await axios.post(process.env.REACT_APP_API_URL+'category',form,{
+            header: {'Accept': 'application/json'}
+        })
+        navigate('/home')
+        console.log(data)
+    }
+
     return (
+        authHelper.getToken()?
         <div>
         <Topbar/>
         <div className="container">
@@ -17,14 +38,14 @@ export default function RegisterCategory() {
                 <div className="newCategoryForm">
                     <div className="newCategoryItem">
                         <label>Nombre</label>
-                        <input id="name" type="text" placeholder="Nombre"/>
+                        <input ref={name} id="name" type="text" placeholder="Nombre"/>
                     </div>
                     <div className="newCategoryItem">
                         <label>Descripción</label>
-                        <input id="description" type="text" placeholder="Descripción"/>
+                        <input ref={description} id="description" type="text" placeholder="Descripción"/>
                     </div>
                     <div className="newCategoryItem">
-                        <button className="newCategoryButton">
+                        <button className="newCategoryButton" onClick={create}>
                             Crear
                         </button>
                     </div>
@@ -38,6 +59,7 @@ export default function RegisterCategory() {
                 </div>
             </div>
         </div>
-    </div>
+    </div>:
+        <Navigate to={'/'}/>
     )
 }

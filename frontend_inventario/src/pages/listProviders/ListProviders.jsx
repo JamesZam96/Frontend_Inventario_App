@@ -5,6 +5,8 @@ import './listProviders.css'
 import {TableContainer} from '@material-ui/core'
 import axios from 'axios'
 import ListTableProviders from '../../components/listTableProviders/listTableProviders'
+import { Navigate } from 'react-router-dom'
+import authHelper from '../../helpers/auth.helper'
 
 export default function ListProviders() {
 
@@ -24,6 +26,7 @@ export default function ListProviders() {
     }
 
     return (
+        authHelper.getToken()?
         <div>
             <div>
             <Topbar/>
@@ -37,6 +40,7 @@ export default function ListProviders() {
                 </div>
             </div>
         </div>
-        </div>
+        </div>:
+        <Navigate to={'/'}/>
     )
 }

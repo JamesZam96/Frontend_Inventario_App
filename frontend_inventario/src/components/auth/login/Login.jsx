@@ -1,10 +1,10 @@
 import axios from 'axios'
 import React, {useRef} from "react";
 import authHelper from '../../../helpers/auth.helper'
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Navigate } from 'react-router-dom';
 import './Login.css'
 import logo from "./logo-login.svg"
-import Topbar from "../../../components/topbar/TopBar"
+import TopBar from '../../topbarLR/topbarLR';
 
 export default function Login() {
 
@@ -24,13 +24,14 @@ export default function Login() {
         // Almacenar token en el localstorage:
         authHelper.setToken(data.data.token)
         // Direccionar a la página de inicio al ingresar:
-        navigate('/')
+        navigate('/home')
         console.log(data.data)
     }
     
     return (
+        !authHelper.getToken()?
         <div>
-            <Topbar/>
+            <TopBar/>
             <div className="Login">
                 <h1 className="LoginTitle">Iniciar sesión</h1>
                     
@@ -61,7 +62,8 @@ export default function Login() {
                         <button className="SignUpButton" onClick={() => navigate('/register')}>Crear cuenta</button>
                     </div>
             </div>   
-        </div>     
+        </div>:
+        <Navigate to={'/home'}/>     
 
         // <Fragment>
         //     <h2>Iniciar sesión</h2>

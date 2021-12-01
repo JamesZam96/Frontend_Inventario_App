@@ -2,31 +2,31 @@ import React, {useEffect, useState} from 'react'
 import Sidebar from '../../components/sidebar/SideBar'
 import Topbar from '../../components/topbar/TopBar'
 import './listEmployees.css'
-import {TableContainer, Table, TableHead, TableBody, TableRow, TableCell} from '@material-ui/core'
+import {TableContainer} from '@material-ui/core'
+import { Navigate } from 'react-router-dom'
+import authHelper from '../../helpers/auth.helper'
+import axios from 'axios'
+import ListTableEmployees from '../../components/listTableEmployees/listTableEmployees'
 
 export default function ListEmployees() {
 
-    const employees = [
-        {nameEmployee:'James', idEmployee: '6731yev', userType: 'Administrador'},
-        {nameEmployee:'Luisa', idEmployee: '313uyv3', userType: 'Vendedor'},
-    ]
+    const [employees, setEmployees] = useState([])
 
-    // const [employees, setEmployees] = useState([])
+    useEffect(()=>{
+        updateEmployees()
+    },[])
 
-    // useEffect(()=>{
-    //     updateEmployees()
-    // },[])
-
-    // const updateEmployees = function(){
-    //     axios.get(process.env.REACT_APP_API_URL+'createclient/')
-    //     .then(res=>{
-    //         console.log(res)
-    //         setEmployees(res.data)
-    //     })
-    //     .catch(err=> console.log(err))
-    // }
+    const updateEmployees = function(){
+        axios.get(process.env.REACT_APP_API_URL+'registerEmployee/')
+        .then(res=>{
+            console.log(res)
+            setEmployees(res.data)
+        })
+        .catch(err=> console.log(err))
+    }
 
     return (
+        authHelper.getToken()?
         <div>
             <div>
             <Topbar/>
@@ -35,28 +35,12 @@ export default function ListEmployees() {
                 <div className="tableListEmployee">
                     <h1 className="listEmployeeTitle">Lista de Empleados</h1>
                     <TableContainer className="tableContainer">
-                    <Table>
-                <TableHead>
-                    <TableRow>
-                        <TableCell><b>Nombres</b></TableCell>
-                        <TableCell><b>Apellidos</b></TableCell>
-                        <TableCell><b>Tipo</b></TableCell>
-                    </TableRow>
-                </TableHead>
-                <TableBody>
-                    {employees.map(employee=>(
-                        <TableRow>
-                            <TableCell>{employee.nameEmployee}</TableCell>
-                            <TableCell>{employee.idEmployee}</TableCell>
-                            <TableCell>{employee.userType}</TableCell>
-                        </TableRow>
-                    ))}
-                </TableBody>
-            </Table>
+                        <ListTableEmployees employees={employees}/>
                     </TableContainer>
                 </div>
             </div>
         </div>
-        </div>
+        </div>:
+        <Navigate to={'/'}/>
     )
 }

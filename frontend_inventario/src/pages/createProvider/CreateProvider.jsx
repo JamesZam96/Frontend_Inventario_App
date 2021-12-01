@@ -1,9 +1,10 @@
 import React, {useRef} from 'react'
 import axios from 'axios'
-import { useNavigate, Link } from 'react-router-dom';
+import { useNavigate, Link, Navigate } from 'react-router-dom';
 import './createProvider.css'
 import SideBar from '../../components/sidebar/SideBar.jsx'
 import Topbar from '../../components/topbar/TopBar.jsx'
+import authHelper from '../../helpers/auth.helper'
 
 export default function CreateProvider() {
 
@@ -36,6 +37,7 @@ export default function CreateProvider() {
 
 
     return (
+        authHelper.getToken()?
         <div>
         <Topbar/>
         <div className="container">
@@ -87,6 +89,7 @@ export default function CreateProvider() {
                 </div>
             </div>
         </div>
-    </div>
+    </div>:
+        <Navigate to={'/'}/>
     )
 }

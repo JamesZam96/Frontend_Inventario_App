@@ -2,7 +2,7 @@ import axios from 'axios'
 import { useNavigate } from 'react-router-dom';
 import React, {useRef} from "react";
 import './Register.css'
-import Topbar from "../../../components/topbar/TopBar"
+import Topbar from "../../topbarLR/topbarLR"
 
 export default function Register() {
 
@@ -62,7 +62,7 @@ export default function Register() {
                             <input ref={pass} type="password" name="" id="pass" placeholder="Contraseñ123*" />
                         </div>
                         <div>
-                            <button className="RegisterButton" onClick={ () => {signUp(); navigate('/login') } }>Registrar</button>
+                            <button className="RegisterButton" onClick={ () => {signUp(); navigate('/') } }>Registrar</button>
                         </div>
                 </div>
             </div>        

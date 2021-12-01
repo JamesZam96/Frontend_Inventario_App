@@ -14,13 +14,14 @@ import ListClients from './pages/listClients/ListClients';
 import ListProviders from './pages/listProviders/ListProviders';
 import RegisterCategory from './pages/registerCategory/RegisterCategory';
 import ListCategory from './pages/listCategory/ListCategory';
+import NotFound from './pages/404notFound/notFound'
 
 
 export default function Router() {
     return(
         <Routes>
-            <Route path={'/'} element={<Home/>} />
-            <Route path={'/login'} element={<Login />} />
+            <Route path={'/home'} element={<Home/>} />
+            <Route path={'/'} element={<Login />} />
             <Route path={'/register'} element={<Register />} />
             <Route path={'/registerEmployee'} element={<CreateUser />} />
             <Route path={'/createclient'} element={<CreateClient/>}/>
@@ -32,6 +33,7 @@ export default function Router() {
             <Route path={'/listprovider'} element={<ListProviders/>}/>
             <Route path={'/registercategory'} element={<RegisterCategory/>}/>
             <Route path={'/listcategory'} element={<ListCategory/>}/>
+            <Route path={'*'} element={<NotFound/>}/>
         </Routes>
     )
 }
