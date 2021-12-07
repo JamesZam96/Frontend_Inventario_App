@@ -45,15 +45,18 @@ export default function CreateUser() {
                 <div className="newEmployeeForm">
                     <div className="newEmployeeItem">
                         <label>Nombres</label>
-                        <input ref={names} id="names" type="text" placeholder="Nombres"/>
+                        <input ref={names} id="names" type="text" placeholder="Nombres" pattern="-?[A-Za-záéíóúÁÉÍÓÚ ]*(\.[0-9]+)?" required/>
+                        <span className="validity"></span>
                     </div>
                     <div className="newEmployeeItem">
                         <label>Apellidos</label>
-                        <input ref={lastNames} id="lastNames" type="text" placeholder="Apellidos"/>
+                        <input ref={lastNames} id="lastNames" type="text" placeholder="Apellidos" pattern="-?[A-Za-záéíóúÁÉÍÓÚ ]*(\.[0-9]+)?" required/>
+                        <span className="validity"></span>
                     </div>
                     <div className="newEmployeeItem">
                         <label>Teléfono</label>
-                        <input ref={phone} id="phone" type="text" placeholder="Teléfono"/>
+                        <input ref={phone} id="phone" type="number" placeholder="Teléfono" pattern="-?[0-9]*(\.[0-9]+)?" required/>
+                        <span className="validity"></span>
                     </div>
                     <div className="newEmployeeItem">
                         <label>Tipo de Usuario</label>
@@ -65,11 +68,13 @@ export default function CreateUser() {
                     </div>
                     <div className="newEmployeeItem">
                         <label>Email</label>
-                        <input ref={email} id="email" type="email" placeholder="ejemplo@ejemplo.com"/>
+                        <input ref={email} id="email" type="email" placeholder="ejemplo@ejemplo.com" required/>
+                        <span className="validity"></span>
                     </div>                    
                     <div className="newEmployeeItem">
                         <label>Contraseña</label>
-                        <input ref={pass} id="pass" type="password" placeholder="Contraseña"/>
+                        <input ref={pass} id="pass" type="password" placeholder="Contraseña" pattern="-?[A-Za-z0-9áéíóúÁÉÍÓÚ ,;.:-_*]*(\.[0-9]+)?" required/>
+                        <span className="validity"></span>
                     </div>
                     <div className="newEmployeeItem">
                     <button className="newEmployeeButton" onClick={signUp}>

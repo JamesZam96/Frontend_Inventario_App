@@ -23,9 +23,7 @@ export default function RegisterProduct() {
         })
         .catch(err=> console.log(err))
     }
-
-
-
+    
     const updateCategories = function(){
         axios.get(process.env.REACT_APP_API_URL+'category/')
         .then(res=>{
@@ -85,27 +83,33 @@ export default function RegisterProduct() {
                 <form className="newProductForm">
                     <div className="newProductItem">
                         <label>Código de barras</label>
-                        <input ref={barcode} id="barcode" type="text" placeholder="Código de barras"/>
+                        <input ref={barcode} id="barcode" type="number" placeholder="Código de barras" pattern="-?[0-9]*(\.[0-9]+)?" required/>
+                        <span className="validity"></span>
                     </div>
                     <div className="newProductItem">
                         <label>Nombre</label>
-                        <input ref={name} id="name" type="text" placeholder="Nombre"/>
+                        <input ref={name} id="name" type="text" placeholder="Nombre" pattern="-?[A-Za-záéíóúÁÉÍÓÚ ]*(\.[0-9]+)?" required/>
+                        <span className="validity"></span>
                     </div>
                     <div className="newProductItem">
                         <label>Unidades</label>
-                        <input ref={units} id="units" type="text" placeholder="Unidades"/>
+                        <input ref={units} id="units" type="number" placeholder="Unidades" pattern="-?[0-9]*(\.[0-9]+)?" required/>
+                        <span className="validity"></span>
                     </div>
                     <div className="newProductItem">
                         <label>Costo</label>
-                        <input ref={cost} id="cost" type="text" placeholder="Costo"/>
+                        <input ref={cost} id="cost" type="number" placeholder="Costo" pattern="-?[0-9]*(\.[0-9]+)?" required/>
+                        <span className="validity"></span>
                     </div>
                     <div className="newProductItem">
                         <label>Precio</label>
-                        <input ref={price} id="price" type="text" placeholder="Precio"/>
+                        <input ref={price} id="price" type="number" placeholder="Precio" pattern="-?[0-9]*(\.[0-9]+)?" required/>
+                        <span className="validity"></span>
                     </div>
                     <div className="newProductItem">
                         <label>Descuento</label>
-                        <input ref={discount} id="discount" type="text" placeholder="Descuento (%)"/>
+                        <input ref={discount} id="discount" type="text" placeholder="Descuento (%)" pattern="-?[0-9]*(\.[0-9]+)?" maxLength="2" required/>
+                        <span className="validity"></span>
                     </div>
                     <div className="newProductItem">
                         <label>Categoría</label>
@@ -116,8 +120,6 @@ export default function RegisterProduct() {
                                     <option value={category.name} key={category._id}>{category.name}</option>
                                 ))
                             }
-                            {/* <option id="category" value="Categoría 1">Categoría 1</option>
-                            <option id="category" value="Categoría 2">Categoría 2</option> */}
                         </select>
                     </div>
                     <div className="newProductItem">
@@ -133,15 +135,18 @@ export default function RegisterProduct() {
                     </div>
                     <div className="newProductItem">
                         <label>Modelo</label>
-                        <input id="model" ref={model} type="text" placeholder="Modelo"/>
+                        <input id="model" ref={model} type="text" placeholder="Modelo" pattern="-?[A-Za-z0-9áéíóúÁÉÍÓÚ ]*(\.[0-9]+)?" required/>
+                        <span className="validity"></span>
                     </div>
                     <div className="newProductItem">
                         <label>Marca</label>
-                        <input id="trademark" ref={trademark} type="text" placeholder="Marca"/>
+                        <input id="trademark" ref={trademark} type="text" placeholder="Marca" pattern="-?[A-Za-záéíóúÁÉÍÓÚ ]*(\.[0-9]+)?" required/>
+                        <span className="validity"></span>
                     </div>
                     <div className="newProductItem">
                         <label>Fecha</label>
-                        <input id="date" ref={date} type="date"/>
+                        <input id="date" ref={date} type="date" required/>
+                        <span className="validity"></span>
                     </div>
                     <div className="newProductItem">
                         <label>Estado</label>

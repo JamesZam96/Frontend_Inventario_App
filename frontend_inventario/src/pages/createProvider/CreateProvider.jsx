@@ -48,31 +48,38 @@ export default function CreateProvider() {
                 <div className="newProviderForm">
                     <div className="newProviderItem">
                         <label>Nombres</label>
-                        <input ref={names} id="names" type="text" placeholder="Nombres"/>
+                        <input ref={names} id="names" type="text" placeholder="Nombres" pattern="-?[A-Za-záéíóúÁÉÍÓÚ ]*(\.[0-9]+)?" required/>
+                        <span className="validity"></span>
                     </div>
                     <div className="newProviderItem">
                         <label>Apellidos</label>
-                        <input ref={lastNames} id="lastNames" type="text" placeholder="Apellidos"/>
+                        <input ref={lastNames} id="lastNames" type="text" placeholder="Apellidos" pattern="-?[A-Za-záéíóúÁÉÍÓÚ ]*(\.[0-9]+)?" required/>
+                        <span className="validity"></span>
                     </div>
                     <div className="newProviderItem">
                         <label>Identificación</label>
-                        <input ref={identification} id="identification" type="text" placeholder="Identificación"/>
+                        <input ref={identification} id="identification" type="number" placeholder="Identificación" pattern="-?[0-9]*(\.[0-9]+)?" required/>
+                        <span className="validity"></span>
                     </div>
                     <div className="newProviderItem">
                         <label>Dirección</label>
-                        <input ref={address} id="address" type="text" placeholder="Dirección"/>
+                        <input ref={address} id="address" type="text" placeholder="Dirección" pattern="-?[A-Za-z0-9áéíóúÁÉÍÓÚ ]*(\.[0-9]+)?" required/>
+                        <span className="validity"></span>
                     </div>
                     <div className="newProviderItem">
                         <label>Email</label>
-                        <input ref={email} id="email" type="email" placeholder="ejemplo@ejemplo.com"/>
+                        <input ref={email} id="email" type="email" placeholder="ejemplo@ejemplo.com" required/>
+                        <span className="validity"></span>
                     </div>
                     <div className="newProviderItem">
                         <label>Teléfono</label>
-                        <input ref={phone} id="phone" type="text" placeholder="Teléfono"/>
+                        <input ref={phone} id="phone" type="text" placeholder="Teléfono" pattern="-?[0-9]*(\.[0-9]+)?" required/>
+                        <span className="validity"></span>
                     </div>
                     <div className="newProviderItem">
                         <label>Web</label>
-                        <input ref={web} id="web" type="text" placeholder="Web"/>
+                        <input ref={web} id="web" type="text" placeholder="Web" pattern="-?[A-Za-z0-9áéíóúÁÉÍÓÚ.]*(\.[0-9]+)?" required/>
+                        <span className="validity"></span>
                     </div>
                     <div className="newProviderItem">
                         <button className="newProviderButton" onClick={create}>

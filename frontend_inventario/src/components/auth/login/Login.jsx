@@ -21,13 +21,21 @@ export default function Login() {
         const data = await axios.post(process.env.REACT_APP_API_URL+'login',form,{
             header: {'Accept': 'application/json'}
         })
+
+        
         // Almacenar token en el localstorage:
         authHelper.setToken(data.data.token)
         // Direccionar a la página de inicio al ingresar:
         navigate('/home')
         console.log(data.data)
+        
+        await axios.get(process.env.REACT_APP_API_URL+'login/email')
+        // .then(res=>{
+        //     console.log(res)
+        // })
+        // .catch(err=> console.log(err))        
     }
-    
+        
     return (
         !authHelper.getToken()?
         <div>
@@ -44,12 +52,14 @@ export default function Login() {
                         {/* Campo para ingresar el email */}
                         <div className="LoginItem">
                             <label htmlFor="email">E-mail</label>
-                            <input ref={email} type="email" name="" id="email" placeholder="mitienda@email.com" />
+                            <input ref={email} type="email" name="" id="email" placeholder="mitienda@email.com" required/>
+                            <span className="validity"></span>
                         </div>
                         {/* Campo para ingresar la contraseña */}
                         <div className="LoginItem">
                             <label htmlFor="pass">Contraseña</label>
-                            <input ref={pass} type="password" name="" id="pass" placeholder="Contraseña123*" />
+                            <input ref={pass} type="password" name="" id="pass" placeholder="Contraseña" required/>
+                            <span className="validity"></span>
                         </div>
                         {/* Botón para ingresar */}
                         <div>
@@ -64,14 +74,5 @@ export default function Login() {
             </div>   
         </div>:
         <Navigate to={'/home'}/>     
-
-        // <Fragment>
-        //     <h2>Iniciar sesión</h2>
-        //     <label htmlFor="email">E-mail</label>
-        //     <input ref={email} type="email" name="" id="email" />
-        //     <label htmlFor="pass">Contraseña</label>
-        //     <input ref={pass} type="password" name="" id="pass" />
-        //     <button onClick={signIn}>Ingresar</button>
-        // </Fragment>
     )
 }

@@ -39,27 +39,33 @@ export default function Register() {
                 <div className="RegisterForm">
                         <div className="RegisterItem">
                             <label htmlFor="storeName">Nombre de la Tienda</label>
-                            <input ref={storeName} type="text" name="" id="storeName" placeholder="Mi Tienda" />
+                            <input ref={storeName} type="text" name="" id="storeName" placeholder="Mi Tienda" pattern="-?[A-Za-z0-9áéíóúÁÉÍÓÚ ]*(\.[0-9]+)?" required/>
+                            <span className="validity"></span>
                         </div>
                         <div className="RegisterItem">
                             <label htmlFor="phone">Teléfono</label>
-                            <input ref={phone} type="text" name="" id="phone" placeholder="+1 123 456 78" />
+                            <input ref={phone} type="number" name="" id="phone" placeholder="327 763 ** **" maxLength="10" pattern="-?[0-9]*(\.[0-9]+)?" required/>
+                            <span className="validity"></span>
                         </div>
                         <div className="RegisterItem">
                             <label htmlFor="names">Nombres</label>
-                            <input ref={names} type="text" name="" id="names" placeholder="Juan" />
+                            <input ref={names} type="text" name="" id="names" placeholder="Juan" pattern="-?[A-Za-záéíóúÁÉÍÓÚ ]*(\.[0-9]+)?" required/>
+                            <span className="validity"></span>
                         </div>
                         <div className="RegisterItem">
                             <label htmlFor="lastName">Apellidos</label>
-                            <input ref={lastNames} type="text" name="" id="lastNames" placeholder="Castaño" />
+                            <input ref={lastNames} type="text" name="" id="lastNames" placeholder="Castaño" pattern="-?[A-Za-záéíóúÁÉÍÓÚ ]*(\.[0-9]+)?" required/>
+                            <span className="validity"></span>
                         </div>
                         <div className="RegisterItem">
                             <label htmlFor="email">E-mail</label>
-                            <input ref={email} type="email" name="" id="email" placeholder="mitienda@email.com" />
+                            <input ref={email} type="email" name="" id="email" placeholder="mitienda@email.com" required/>
+                            <span className="validity"></span>
                         </div>
                         <div className="RegisterItem">
                             <label htmlFor="pass">Contraseña</label>
-                            <input ref={pass} type="password" name="" id="pass" placeholder="Contraseñ123*" />
+                            <input ref={pass} type="password" name="" id="pass" placeholder="Contraseña" pattern="-?[A-Za-z0-9áéíóúÁÉÍÓÚ ,;.:-_*]*(\.[0-9]+)?" required/>
+                            <span className="validity"></span>
                         </div>
                         <div>
                             <button className="RegisterButton" onClick={ () => {signUp(); navigate('/') } }>Registrar</button>
@@ -67,28 +73,5 @@ export default function Register() {
                 </div>
             </div>        
         </div>  
-
-        // <Fragment>
-        //     <h2>Crear cuenta</h2>
-        //     <label htmlFor="storeName">Nombre de la Tienda</label>
-        //     <input ref={storeName} type="text" name="" id="storeName" />
-
-        //     <label htmlFor="names">Nombres</label>
-        //     <input ref={names} type="text" name="" id="names" />
-
-        //     <label htmlFor="lastName">Apellidos</label>
-        //     <input ref={lastNames} type="text" name="" id="lastNames" />
-
-        //     <label htmlFor="phone">Teléfono</label>
-        //     <input ref={phone} type="text" name="" id="phone" />
-
-        //     <label htmlFor="email">E-mail</label>
-        //     <input ref={email} type="email" name="" id="email" />
-
-        //     <label htmlFor="pass">Contraseña</label>
-        //     <input ref={pass} type="password" name="" id="pass" />
-
-        //     <button onClick={signUp}>Registrar</button>
-        // </Fragment>
     )
 }

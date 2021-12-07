@@ -38,11 +38,13 @@ export default function RegisterCategory() {
                 <div className="newCategoryForm">
                     <div className="newCategoryItem">
                         <label>Nombre</label>
-                        <input ref={name} id="name" type="text" placeholder="Nombre"/>
+                        <input ref={name} id="name" type="text" placeholder="Nombre" pattern="-?[A-Za-z0-9áéíóúÁÉÍÓÚ ]*(\.[0-9]+)?" required/>
+                        <span className="validity"></span>
                     </div>
                     <div className="newCategoryItem">
                         <label>Descripción</label>
-                        <input ref={description} id="description" type="text" placeholder="Descripción"/>
+                        <input ref={description} id="description" type="text" placeholder="Descripción" pattern="-?[A-Za-z0-9áéíóúÁÉÍÓÚ ]*(\.[0-9]+)?" required/>
+                        <span className="validity"></span>
                     </div>
                     <div className="newCategoryItem">
                         <button className="newCategoryButton" onClick={create}>

@@ -32,7 +32,7 @@ export default function CreateClient() {
         navigate('/')
         console.log(data)
     }
-
+ 
     return (
         authHelper.getToken()?
         <div>
@@ -45,27 +45,33 @@ export default function CreateClient() {
                 <div className="newClientForm">
                     <div className="newClientItem">
                         <label>Nombres</label>
-                        <input ref={names} id="names" type="text" placeholder="Nombres"/>
+                        <input ref={names} id="names" type="text" placeholder="Nombres" pattern="-?[A-Za-záéíóúÁÉÍÓÚ ]*(\.[0-9]+)?" required/>
+                        <span className="validity"></span>
                     </div>
                     <div className="newClientItem">
                         <label>Apellidos</label>
-                        <input ref={lastNames} id="lastNames" type="text" placeholder="Apellidos"/>
+                        <input ref={lastNames} id="lastNames" type="text" placeholder="Apellidos" pattern="-?[A-Za-záéíóúÁÉÍÓÚ ]*(\.[0-9]+)?" required/>
+                        <span className="validity"></span>
                     </div>
                     <div className="newClientItem">
                         <label>Identificación</label>
-                        <input ref={identification} id="identification" type="text" placeholder="Identificación"/>
+                        <input ref={identification} id="identification" type="number" placeholder="Identificación" pattern="-?[0-9]*(\.[0-9]+)?" required/>
+                        <span className="validity"></span>
                     </div>
                     <div className="newClientItem">
                         <label>Dirección</label>
-                        <input ref={address} id="address" type="text" placeholder="Dirección"/>
+                        <input ref={address} id="address" type="text" placeholder="Dirección" pattern="-?[A-Za-z0-9áéíóúÁÉÍÓÚ ]*(\.[0-9]+)?" required/>
+                        <span className="validity"></span>
                     </div>
                     <div className="newClientItem">
                         <label>Email</label>
-                        <input ref={email} id="email" type="email" placeholder="ejemplo@ejemplo.com"/>
+                        <input ref={email} id="email" type="email" placeholder="ejemplo@ejemplo.com" required/>
+                        <span className="validity"></span>
                     </div>
                     <div className="newClientItem">
                         <label>Teléfono</label>
-                        <input ref={phone} id="phone" type="text" placeholder="Teléfono"/>
+                        <input ref={phone} id="phone" type="number" placeholder="Teléfono" pattern="-?[0-9]*(\.[0-9]+)?" required/>
+                        <span className="validity"></span>
                     </div>
                     <div className="newClientItem">
                         <button className="newClientButton" onClick={create}>
