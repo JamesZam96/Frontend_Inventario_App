@@ -19,7 +19,7 @@ export default function Login() {
         form.append('password', pass.current.value)
         console.log(process.env.REACT_APP_API_URL)
         const data = await axios.post(process.env.REACT_APP_API_URL+'login',form,{
-            header: {'Accept': 'application/json'}
+            headers: {'Accept': 'application/json'}
         })
 
         
@@ -29,7 +29,7 @@ export default function Login() {
         navigate('/home')
         console.log(data.data)
         
-        await axios.get(process.env.REACT_APP_API_URL+'login/email')
+        // await axios.get(process.env.REACT_APP_API_URL+'login/email')
         // .then(res=>{
         //     console.log(res)
         // })

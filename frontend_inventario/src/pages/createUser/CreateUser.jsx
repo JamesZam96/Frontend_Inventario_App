@@ -27,7 +27,8 @@ export default function CreateUser() {
         form.append('password', pass.current.value)
         console.log(process.env.REACT_APP_API_URL)
         const data = await axios.post(process.env.REACT_APP_API_URL+'registerEmployee',form,{
-            header: {'Accept': 'application/json'}
+            headers: {'Accept': 'application/json',
+                    'x-auth-token': authHelper.getToken()}
         })
         navigate('/')
         console.log(data)

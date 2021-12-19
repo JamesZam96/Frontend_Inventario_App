@@ -29,7 +29,8 @@ export default function CreateProvider() {
         form.append('web', web.current.value)
         console.log(process.env.REACT_APP_API_URL)
         const data = await axios.post(process.env.REACT_APP_API_URL+'createprovider',form,{
-            header: {'Accept': 'application/json'}
+            headers: {'Accept': 'application/json',
+                    'x-auth-token': authHelper.getToken()}
         })
         navigate('/')
         console.log(data)

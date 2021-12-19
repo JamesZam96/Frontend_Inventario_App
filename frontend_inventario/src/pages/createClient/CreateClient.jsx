@@ -27,7 +27,8 @@ export default function CreateClient() {
         form.append('phone', phone.current.value)
         console.log(process.env.REACT_APP_API_URL)
         const data = await axios.post(process.env.REACT_APP_API_URL+'createclient',form,{
-            header: {'Accept': 'application/json'}
+            headers: {'Accept': 'application/json',
+                    'x-auth-token':authHelper.getToken()}
         })
         navigate('/')
         console.log(data)

@@ -17,10 +17,14 @@ export default function ListProviders() {
     },[])
 
     const updateProviders = function(){
-        axios.get(process.env.REACT_APP_API_URL+'createprovider/')
+        axios.get(process.env.REACT_APP_API_URL+'createprovider/',{
+            headers: {
+                'x-auth-token': authHelper.getToken()
+            }
+        })
         .then(res=>{
             console.log(res)
-            setProviders(res.data)
+            setProviders(res.data.providers)
         })
         .catch(err=> console.log(err))
     }

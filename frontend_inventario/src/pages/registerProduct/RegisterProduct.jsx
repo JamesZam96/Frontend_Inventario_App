@@ -16,19 +16,27 @@ export default function RegisterProduct() {
     },[])
 
     const updateProviders = function(){
-        axios.get(process.env.REACT_APP_API_URL+'createprovider/')
+        axios.get(process.env.REACT_APP_API_URL+'createprovider/',{
+            headers: {
+                'x-auth-token': authHelper.getToken()
+            }
+        })
         .then(res=>{
             console.log(res)
-            setProviders(res.data)
+            setProviders(res.data.providers)
         })
         .catch(err=> console.log(err))
     }
     
     const updateCategories = function(){
-        axios.get(process.env.REACT_APP_API_URL+'category/')
+        axios.get(process.env.REACT_APP_API_URL+'category/',{
+            headers: {
+                'x-auth-token': authHelper.getToken()
+            }
+        })
         .then(res=>{
             console.log(res)
-            setCategories(res.data)
+            setCategories(res.data.categories)
         })
         .catch(err=> console.log(err))
     }
@@ -65,9 +73,10 @@ export default function RegisterProduct() {
 
         console.log(process.env.REACT_APP_API_URL)
         const data = await axios.post(process.env.REACT_APP_API_URL+'product',form,{
-            header: {'Accept': 'application/json'}
+            headers: {'Accept': 'application/json',
+                    'x-auth-token':authHelper.getToken()}
         })
-        navigate('/home')
+        navigate('/')
         console.log(data)
     }
 
@@ -80,7 +89,7 @@ export default function RegisterProduct() {
             <div className="newProduct">
                 <h1 className="newProductTitle">Nuevo Producto</h1>
                 <h3 className="titleProduct">Datos del Producto</h3>
-                <form className="newProductForm">
+                <div className="newProductForm">
                     <div className="newProductItem">
                         <label>Código de barras</label>
                         <input ref={barcode} id="barcode" type="number" placeholder="Código de barras" pattern="-?[0-9]*(\.[0-9]+)?" required/>
@@ -168,7 +177,7 @@ export default function RegisterProduct() {
                             </button>
                         </div>
                     </Link>
-                </form>
+                </div>
             </div>
         </div>
     </div>:

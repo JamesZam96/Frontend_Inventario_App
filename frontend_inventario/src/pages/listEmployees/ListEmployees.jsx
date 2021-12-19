@@ -17,10 +17,14 @@ export default function ListEmployees() {
     },[])
 
     const updateEmployees = function(){
-        axios.get(process.env.REACT_APP_API_URL+'registerEmployee/')
+        axios.get(process.env.REACT_APP_API_URL+'registerEmployee/',{
+            headers: {
+                'x-auth-token': authHelper.getToken()
+            }
+        })
         .then(res=>{
             console.log(res)
-            setEmployees(res.data)
+            setEmployees(res.data.employees)
         })
         .catch(err=> console.log(err))
     }

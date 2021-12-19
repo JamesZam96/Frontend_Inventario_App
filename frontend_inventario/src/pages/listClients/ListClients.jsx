@@ -17,10 +17,14 @@ export default function ListClients() {
     },[])
 
     const updateClients = function(){
-        axios.get(process.env.REACT_APP_API_URL+'createclient/')
+        axios.get(process.env.REACT_APP_API_URL+'createclient/',{
+            headers: {
+                'x-auth-token': authHelper.getToken()
+            }
+        })
         .then(res=>{
             console.log(res)
-            setClients(res.data)
+            setClients(res.data.clients)
         })
         .catch(err=> console.log(err))
     }

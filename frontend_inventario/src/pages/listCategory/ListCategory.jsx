@@ -7,7 +7,7 @@ import { Navigate } from 'react-router-dom'
 import authHelper from '../../helpers/auth.helper'
 import axios from 'axios'
 import ListTableCategories from '../../components/listTableCategories/listTableCategories'
-
+ 
 export default function ListCategory() {
 
     const [categories, setCategories] = useState([])
@@ -17,10 +17,14 @@ export default function ListCategory() {
     },[])
 
     const uptadateCategories = function(){
-        axios.get(process.env.REACT_APP_API_URL+'category/')
+        axios.get(process.env.REACT_APP_API_URL+'category/',{
+            headers: {
+                'x-auth-token': authHelper.getToken()
+            }
+        })
         .then(res=>{
             console.log(res)
-            setCategories(res.data)
+            setCategories(res.data.categories)
         })
         .catch(err=> console.log(err))
     }

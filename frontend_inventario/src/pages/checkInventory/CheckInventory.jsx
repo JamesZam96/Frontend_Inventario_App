@@ -17,10 +17,14 @@ export default function CheckInventory() {
     },[])
 
     const updateProducts = function(){
-        axios.get(process.env.REACT_APP_API_URL+'product/')
+        axios.get(process.env.REACT_APP_API_URL+'product/',{
+            headers: {
+                'x-auth-token': authHelper.getToken()
+            }
+        })
         .then(res=>{
             console.log(res)
-            setProducts(res.data)
+            setProducts(res.data.products)
         })
         .catch(err=> console.log(err))
     }

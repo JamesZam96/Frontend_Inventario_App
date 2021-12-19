@@ -20,7 +20,8 @@ export default function RegisterCategory() {
 
         console.log(process.env.REACT_APP_API_URL)
         const data = await axios.post(process.env.REACT_APP_API_URL+'category',form,{
-            header: {'Accept': 'application/json'}
+            headers: {'Accept': 'application/json',
+                    'x-auth-token': authHelper.getToken()}
         })
         navigate('/home')
         console.log(data)

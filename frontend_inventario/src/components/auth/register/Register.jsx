@@ -25,7 +25,7 @@ export default function Register() {
         form.append('password', pass.current.value)
         console.log(process.env.REACT_APP_API_URL)
         const data = await axios.post(process.env.REACT_APP_API_URL+'register',form,{
-            header: {'Accept': 'application/json'}
+            headers: {'Accept': 'application/json'}
         })
         console.log(data)
     }
